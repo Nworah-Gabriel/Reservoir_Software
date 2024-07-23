@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Predict Maintenance Cost</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.min.css">
+    <style>
+        body {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+        h2 {
+            text-align: center;
+        }
+        .form-label {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Predict Maintenance Cost</h2>
+    <form method="POST" action="">
+        {% csrf_token %}
+        <label for="production_rate">Production Rate:</label>
+        <input type="text" id="production_rate" name="production_rate" required><br><br>
+        
+        <label for="pressure">Pressure:</label>
+        <input type="text" id="pressure" name="pressure" required><br><br>
+        
+        <label for="temperature">Temperature:</label>
+        <input type="text" id="temperature" name="temperature" required><br><br>
+        
+        <label for="maintenance_date">Maintenance Date (YYYY-MM-DD):</label>
+        <input type="date" id="maintenance_date" name="maintenance_date" required><br><br>
+
+        <label for="installation_date">Installation Date (YYYY-MM-DD):</label>
+        <input type="date" id="installation_date" name="installation_date" required><br><br>
+
+        <input type="submit" value="Predict" class="button-primary">
+    </form>
+</body>
+</html>

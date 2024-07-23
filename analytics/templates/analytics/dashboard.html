@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body>
+    <h1>Dashboard</h1>
+    <div id="production_data_plot"></div>
+    <div id="equipment_data_plot"></div>
+    <div id="maintenance_log_plot"></div>
+    <script>
+        // Fetch Production Data
+        fetch('/data_entry/production_data/')
+            .then(response => response.json())
+            .then(data => {
+                const dates = data.map(item => item.date);
+                const productionRates = data.map(item => item.production_rate);
+
+                const trace = {
+                    x: dates,
+                    y: productionRates,
+                    type: 'scatter'
+                };
+
+                const layout = {
+                    title: 'Production Data',
+                    xaxis: { title: 'Date' },
+                    yaxis: { title: 'Production Rate' }
+                };
+
+                Plotly.newPlot('production_data_plot', [trace], layout);
+            });
+
+        // Fetch Equipment Data
+        fetch('/data_entry/equipment_data/')
+            .then(response => response.json())
+            .then(data => {
+                const equipmentIds = data.map(item => item.equipment_id);
+                const statuses = data.map(item => item.status);
+
+                const trace = {
+                    x: equipmentIds,
+                    y: statuses,
+                    type: 'bar'
+                };
+
+                const layout = {
+                    title: 'Equipment Data',
+                    xaxis: { title: 'Equipment ID' },
+                    yaxis: { title: 'Status' }
+                };
+
+                Plotly.newPlot('equipment_data_plot', [trace], layout);
+            });
+
+        // Fetch Maintenance Log Data
+        fetch('/data_entry/maintenance_logs/')
+            .then(response => response.json())
+            .then(data => {
+                const dates = data.map(item => item.maintenance_date);
+                const descriptions = data.map(item => item.description);
+
+                const trace = {
+                    x: dates,
+                    y: descriptions,
+                    type: 'bar'
+                };
+
+                const layout = {
+                    title: 'Maintenance Logs',
+                    xaxis: { title: 'Date' },
+                    yaxis: { title: 'Description' }
+                };
+
+                Plotly.newPlot('maintenance_log_plot', [trace], layout);
+            });
+    </script>
+</body>
+</html>

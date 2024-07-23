@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Result</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.min.css">
+    <style>
+        body {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+        h2 {
+            text-align: center;
+        }
+        .result-box {
+            border: 1px solid #ccc;
+            padding: 20px;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Prediction Result</h2>
+    <div class="result-box">
+        <p><strong>Predicted Maintenance Cost:</strong> {{ predicted_cost }}</p>
+    </div>
+    <br>
+    <a href="" class="button">Back</a>
+</body>
+</html>
