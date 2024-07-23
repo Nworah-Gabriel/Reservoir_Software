@@ -19,3 +19,4 @@ matplotlib
 joblib
 numpy
 seaborn
+gunicorn==20.0.4
